@@ -1,0 +1,59 @@
+#*.a   # 忽略所有 .a 结尾的文件
+#!lib.a# 但 lib.a 除外
+#/abc # 僅忽略项目根目錄下的 abc 文件，不包括 xxx/abc
+#build/# 忽略 build/ 目錄下的所有文件
+#doc/*.txt # 會忽略 doc/notes.txt 但不包括 doc/server/arch.txt
+
+#git rm -r --cached .
+#git add .
+#git commit -m "update .gitignore"
+
+*.iml
+.gradle
+.idea
+/local.properties
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+
+#for mac
+/_mac
+/codestyles
+/androidStudioFirstRun.xml
+/colors.scheme.xml
+/debugger.xml
+/find.xml
+/ide.general.xml
+/studioFlags.xml
+/ui.lnf.xml
+/vcs.xml
+
+# Log Files
+*.log
+
+# Keystore files
+# Uncomment the following line if you do not want to check your keystore files in.
+#*.jks
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+
+# generated files
+bin/
+gen/
+
+# Intellij project files
+*.ipr
+*.iws
