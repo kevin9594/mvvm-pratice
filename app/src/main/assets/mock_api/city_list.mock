@@ -1,0 +1,90 @@
+{
+    "data": [
+        {
+            "cityId": "01",
+            "city": "台北市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "02",
+            "city": "高雄市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "03",
+            "city": "新竹市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "04",
+            "city": "花蓮市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "05",
+            "city": "台南市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "06",
+            "city": "宜蘭市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "07",
+            "city": "高雄市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "08",
+            "city": "桃園市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "09",
+            "city": "嘉義市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "10",
+            "city": "雲林市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "11",
+            "city": "台東市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "12",
+            "city": "屏東市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "13",
+            "city": "彰化市",
+            "provinceId": "100",
+            "areas": null
+        },
+        {
+            "cityId": "14",
+            "city": "基隆市",
+            "provinceId": "100",
+            "areas": null
+        }
+    ],
+    "code": 0,
+    "message": "成功"
+}

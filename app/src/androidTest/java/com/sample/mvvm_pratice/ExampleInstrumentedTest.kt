@@ -1,4 +1,4 @@
-package com.sideproject.mvvm_pratice
+package com.sample.mvvm_pratice
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.sideproject.mvvm_pratice", appContext.packageName)
+        assertEquals("com.sample.mvvm_data_binding_koin", appContext.packageName)
     }
 }

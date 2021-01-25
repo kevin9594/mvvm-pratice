@@ -1,0 +1,9 @@
+{
+    "data": {
+        "userName": "Michael Jordan",
+        "age": 18,
+        "userId": 1
+    },
+    "code": 0,
+    "message": "成功"
+}

@@ -1,4 +1,4 @@
-package com.sideproject.mvvm_pratice
+package com.sample.mvvm_pratice
 
 import org.junit.Test
 
