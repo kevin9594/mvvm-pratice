@@ -1,4 +1,4 @@
-package org.cxct.sportlottery.network.error
+package com.sample.mvvm_data_binding_koin.error
 
 enum class TokenError(val code: Int) {
     FAILURE(1002),

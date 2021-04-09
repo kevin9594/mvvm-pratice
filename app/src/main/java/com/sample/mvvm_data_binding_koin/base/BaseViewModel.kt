@@ -1,4 +1,4 @@
-package com.sample.mvvm_data_binding_koin.base
+package org.cxct.sportlottery.ui.base
 
 import android.content.Context
 import androidx.annotation.Nullable
@@ -7,12 +7,24 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.async
-import com.sample.mvvm_data_binding_koin.util.NetworkUtil
+import kotlinx.coroutines.launch
+import org.cxct.sportlottery.R
+import org.cxct.sportlottery.network.common.BaseResult
+import org.cxct.sportlottery.network.error.ErrorUtils
+import org.cxct.sportlottery.network.error.HttpError
+import org.cxct.sportlottery.repository.BetInfoRepository
+import org.cxct.sportlottery.repository.InfoCenterRepository
+import org.cxct.sportlottery.repository.LoginRepository
+import org.cxct.sportlottery.util.NetworkUtil
 import retrofit2.Response
 import java.net.SocketTimeoutException
 
 
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel(
+    val loginRepository: LoginRepository,
+    val betInfoRepository: BetInfoRepository,
+    val infoCenterRepository: InfoCenterRepository
+) : ViewModel() {
     val errorResultToken: LiveData<BaseResult>
         get() = _errorResultToken
 
@@ -52,42 +64,42 @@ abstract class BaseViewModel : ViewModel() {
         val apiResult = viewModelScope.async {
             try {
                 val response = apiFun()
-
                 when (response.isSuccessful) {
-//                    true -> return@async response.body()
-//                    false -> return@async doResponseError(response)
-                    true -> return@async
-                    false -> return@async
+                    true -> return@async response.body()
+                    false -> return@async doResponseError(response)
                 }
 
             } catch (e: Exception) {
-//                return@async doOnException(context, e)
-                return@async
+                e.printStackTrace()
+                return@async doOnException(context, e)
             }
         }
 
-//        return apiResult.await()
-        return null
+        return apiResult.await()
     }
 
     private fun <T : BaseResult> doNoConnect(context: Context): T? {
-        _networkUnavailableMsg.postValue("連線異常")
+        _networkUnavailableMsg.postValue(context.getString(R.string.message_network_no_connect))
         return null
     }
 
     private fun <T : BaseResult> doResponseError(response: Response<T>): T? {
-//        val errorResult = ErrorUtils.parseError(response)
-//        errorResult?.let {
-//            if (it !is LogoutResult
-//                && it.code == TokenError.EXPIRED.code
-//                && it.code == TokenError.FAILURE.code
-//                && it.code == TokenError.REPEAT_LOGIN.code
-//            ) {
-//                _errorResultToken.postValue(it)
-//            }
-//        }
-//        return errorResult
-        return null
+        val errorResult = ErrorUtils.parseError(response)
+        if (response.code() == HttpError.UNAUTHORIZED.code) {
+            errorResult?.let {
+                _errorResultToken.postValue(it)
+            }
+        }
+        return errorResult
+    }
+
+    fun doLogoutCleanUser() {
+        viewModelScope.launch {
+            loginRepository.clear()
+            betInfoRepository.clear()
+            infoCenterRepository.clear()
+            loginRepository.logout()
+        }
     }
 
     private fun <T : BaseResult> doOnException(context: Context, exception: Exception): T? {
@@ -99,7 +111,7 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     private fun doOnTimeOutException(context: Context) {
-        _networkExceptionTimeout.postValue("連線過時")
+        _networkExceptionTimeout.postValue(context.getString(R.string.message_network_timeout))
     }
 
     private fun doOnUnknownException(exception: Exception) {
