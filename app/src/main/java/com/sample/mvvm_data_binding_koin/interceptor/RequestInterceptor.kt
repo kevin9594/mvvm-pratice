@@ -1,12 +1,11 @@
-package org.cxct.sportlottery.network.interceptor
+package com.sample.mvvm_data_binding_koin.interceptor
 
 import android.content.Context
 import android.content.SharedPreferences
 import okhttp3.Interceptor
 import okhttp3.Response
-import org.cxct.sportlottery.repository.KEY_TOKEN
-import org.cxct.sportlottery.repository.NAME_LOGIN
-import org.cxct.sportlottery.util.LanguageManager
+import com.sample.mvvm_data_binding_koin.repository.KEY_TOKEN
+import com.sample.mvvm_data_binding_koin.repository.NAME_LOGIN
 import timber.log.Timber
 
 import java.io.IOException
@@ -39,7 +38,7 @@ class RequestInterceptor(private val context: Context?) : Interceptor {
         // header
         // ex : builder.addHeader("appKey", BuildConfig.APP_KEY)
 
-        builder.addHeader("x-lang", LanguageManager.getSelectLanguage(context).key)
+//        builder.addHeader("x-lang", LanguageManager.getSelectLanguage(context).key)
         sharedPref?.getString(KEY_TOKEN, "")?.let {
             builder.addHeader("x-session-token", it)
         }

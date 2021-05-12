@@ -1,21 +1,17 @@
-package org.cxct.sportlottery.ui.base
+package com.sample.mvvm_data_binding_koin.base
 
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import org.cxct.sportlottery.repository.BetInfoRepository
-import org.cxct.sportlottery.repository.InfoCenterRepository
-import org.cxct.sportlottery.repository.LoginRepository
+import com.sample.mvvm_data_binding_koin.repository.LoginRepository
 
 abstract class BaseSocketViewModel(
     loginRepository: LoginRepository,
-    betInfoRepository: BetInfoRepository,
-    infoCenterRepository: InfoCenterRepository
-) : BaseViewModel(loginRepository, betInfoRepository, infoCenterRepository) {
+) : BaseViewModel(loginRepository) {
 
     init {
         if (!loginRepository.isCheckToken) {
             viewModelScope.launch {
-                loginRepository.checkToken()
+
             }
         }
     }

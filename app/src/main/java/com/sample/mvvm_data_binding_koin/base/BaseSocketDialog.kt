@@ -1,4 +1,4 @@
-package org.cxct.sportlottery.ui.base
+package com.sample.mvvm_data_binding_koin.base
 
 import kotlin.reflect.KClass
 
@@ -9,6 +9,6 @@ abstract class BaseSocketDialog<T : BaseViewModel>(clazz: KClass<T>) : BaseDialo
     }
 
     val service by lazy {
-        (activity as BaseSocketActivity<*>).backService
+//        (activity as BaseSocketActivity<*>).backService
     }
 }

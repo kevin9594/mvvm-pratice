@@ -12,8 +12,8 @@ import com.sample.mvvm_pratice.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
-import org.cxct.sportlottery.network.interceptor.MoreBaseUrlInterceptor
-import org.cxct.sportlottery.network.interceptor.RequestInterceptor
+import com.sample.mvvm_data_binding_koin.interceptor.MoreBaseUrlInterceptor
+import com.sample.mvvm_data_binding_koin.interceptor.RequestInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit

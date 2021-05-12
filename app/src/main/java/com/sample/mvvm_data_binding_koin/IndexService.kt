@@ -7,7 +7,8 @@ import retrofit2.http.POST
 
 interface IndexService {
 
-//    @POST(INDEX_LOGIN)
+    @POST(INDEX_LOGIN)
+    suspend fun login(): Response<LoginResult>
 //    suspend fun login(@Body loginRequest: LoginRequest): Response<LoginResult>
 
 
